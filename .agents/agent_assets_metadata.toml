@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "LlwVzFfFSu5PToUUcJnm7"
+uri = "file://PSCMR-CET-EventManagement.tar.gz"
+type = "unspecified"
+title = "PSCMR-CET Event Management System - Project Files"

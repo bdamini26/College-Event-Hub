@@ -30,10 +30,10 @@ export default function Home() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-40"
             src={`${import.meta.env.BASE_URL}college-video.mp4`}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

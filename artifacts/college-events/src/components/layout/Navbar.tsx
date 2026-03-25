@@ -1,24 +1,27 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, LogOut, UserCircle, ShieldCheck } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 export function Navbar() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logout, isAdmin } = useAuth();
 
   const links = [
     { href: "/", label: "Home" },
     { href: "/events", label: "Events" },
     { href: "/gallery", label: "Gallery" },
     { href: "/about", label: "About" },
-    { href: "/admin", label: "Admin" },
+    ...(isAdmin ? [{ href: "/admin", label: "Admin" }] : []),
   ];
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between items-center">
+          {/* Logo */}
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
               <img
@@ -36,8 +39,8 @@ export function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
             {links.map((link) => (
-              <Link 
-                key={link.href} 
+              <Link
+                key={link.href}
                 href={link.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary relative py-2",
@@ -50,11 +53,46 @@ export function Navbar() {
                 )}
               </Link>
             ))}
+
+            {/* Auth Buttons */}
+            {user ? (
+              <div className="flex items-center gap-3 ml-2">
+                <div className="flex items-center gap-2 text-sm text-foreground">
+                  {isAdmin
+                    ? <ShieldCheck className="w-4 h-4 text-accent" />
+                    : <UserCircle className="w-4 h-4 text-primary" />
+                  }
+                  <span className="font-medium max-w-[120px] truncate">{user.name}</span>
+                </div>
+                <button
+                  onClick={logout}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-destructive border border-destructive/30 hover:bg-destructive/10 transition-colors"
+                >
+                  <LogOut className="w-4 h-4" /> Logout
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 ml-2">
+                <Link href="/login"
+                  className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-medium text-primary border border-primary/30 hover:bg-primary/10 transition-colors">
+                  <LogIn className="w-4 h-4" /> Login
+                </Link>
+                <Link href="/register"
+                  className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm">
+                  Register
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center">
-            <button 
+          <div className="md:hidden flex items-center gap-2">
+            {!user && (
+              <Link href="/login" className="text-sm font-medium text-primary px-3 py-1.5 border border-primary/30 rounded-lg">
+                Login
+              </Link>
+            )}
+            <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-foreground/80 hover:text-primary transition-colors"
             >
@@ -75,14 +113,34 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={cn(
                   "block px-3 py-2 rounded-md text-base font-medium transition-colors",
-                  location === link.href 
-                    ? "bg-primary/10 text-primary" 
+                  location === link.href
+                    ? "bg-primary/10 text-primary"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 )}
               >
                 {link.label}
               </Link>
             ))}
+            {user ? (
+              <div className="pt-2 border-t border-border mt-2">
+                <div className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground">
+                  <UserCircle className="w-4 h-4" />
+                  <span className="font-medium">{user.name}</span>
+                  {isAdmin && <span className="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded-full">Admin</span>}
+                </div>
+                <button onClick={() => { logout(); setIsOpen(false); }}
+                  className="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-destructive hover:bg-destructive/10 transition-colors flex items-center gap-2">
+                  <LogOut className="w-4 h-4" /> Logout
+                </button>
+              </div>
+            ) : (
+              <div className="pt-2 border-t border-border mt-2 space-y-1">
+                <Link href="/register" onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 rounded-md text-base font-semibold bg-primary text-primary-foreground text-center">
+                  Create Account
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       )}

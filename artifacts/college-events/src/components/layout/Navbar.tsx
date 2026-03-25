@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { GraduationCap, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export function Navbar() {
@@ -21,9 +21,11 @@ export function Navbar() {
         <div className="flex h-16 justify-between items-center">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
-              <div className="bg-primary p-2 rounded-lg text-primary-foreground">
-                <GraduationCap className="h-6 w-6" />
-              </div>
+              <img
+                src={`${import.meta.env.BASE_URL}logo.ico`}
+                alt="PSCMR-CET Logo"
+                className="h-10 w-10 rounded-lg object-contain"
+              />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-lg leading-tight text-primary">PSCMR-CET</span>
                 <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Event Management</span>

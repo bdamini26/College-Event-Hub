@@ -51,7 +51,8 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-sm text-primary-foreground/60">
           <p>© {new Date().getFullYear()} PSCMR-CET. All rights reserved.</p>
           <p className="mt-2 md:mt-0 flex items-center gap-1">
-            Built with <span className="text-accent">♥</span> by SAC Committee
+            Built with <span className="text-accent">♥</span> by{" "}
+            <span className="text-accent font-semibold ml-1">InnoMind Team</span>
           </p>
         </div>
       </div>

@@ -1,0 +1,22 @@
+packages:
+  "framer-motion": "For page transitions, scroll animations, and interactive elements"
+  "react-hook-form": "For managing complex forms like event registration and creation"
+  "@hookform/resolvers": "Zod validation resolver for react-hook-form"
+  "date-fns": "For formatting event dates and times"
+  "clsx": "Utility for conditionally joining classNames"
+  "tailwind-merge": "Utility for merging tailwind classes without conflicts"
+
+images:
+  - path: "artifacts/college-events/public/images/hero-bg.png"
+    description: "A professional, abstract modern background suitable for a college engineering event platform. Deep blue (#1a3a6b) and subtle gold accents with a high-tech geometric network pattern."
+    aspect_ratio: "16:9"
+  - path: "artifacts/college-events/public/images/logo.png"
+    description: "A minimal, modern academic crest or logo mark representing an engineering college. Clean lines, deep blue and gold colors on a transparent background."
+    aspect_ratio: "1:1"
+  - path: "artifacts/college-events/public/images/pattern.png"
+    description: "Subtle decorative background pattern featuring elegant dots or grid lines for section backgrounds."
+    aspect_ratio: "16:9"
+
+notes:
+  - Assuming @workspace/api-client-react exports the generated hooks and types.
+  - Using Tailwind v4 inline theme configuration.

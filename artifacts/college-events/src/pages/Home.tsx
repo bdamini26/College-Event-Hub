@@ -33,7 +33,7 @@ export default function Home() {
             className="w-full h-full object-cover"
             src={`${import.meta.env.BASE_URL}college-video.mp4`}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/75 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -43,6 +43,15 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
+            {/* College Logo */}
+            <motion.img
+              src={`${import.meta.env.BASE_URL}college-logo.png`}
+              alt="PSCMR-CET Logo"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-28 h-28 mx-auto mb-6 drop-shadow-2xl"
+            />
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>

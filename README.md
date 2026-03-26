@@ -1,7 +1,4 @@
-# PSCMR-CET College Event Management System
-
-## Potti Sriramulu Chalavadi Mallikarjuna Rao College of Engineering and Technology
-### Vijayawada, Andhra Pradesh
+# PSCMRCET College Event Management System
 
 ---
 

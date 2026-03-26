@@ -23,7 +23,7 @@
 
 ## 1. Project Overview
 
-The **PSCMR-CET College Event Management System** is a full-featured web application designed to help students and faculty at Potti Sriramulu Chalavadi Mallikarjuna Rao College of Engineering and Technology manage, discover, and register for college events.
+The **PSCMRCET College Event Management System** is a full-featured web application designed to help students and faculty at Potti Sriramulu Chalavadi Mallikarjuna Rao College of Engineering and Technology manage, discover, and register for college events.
 
 The system supports:
 - Browsing upcoming, ongoing, and past events
